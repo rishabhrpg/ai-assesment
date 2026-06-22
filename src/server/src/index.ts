@@ -6,7 +6,8 @@ const dbPath = resolveDatabasePath();
 const db = createDb(dbPath);
 const app = createApp(db);
 
-const port = Number(process.env.PORT) || 3000;
+const port = Number(process.env.PORT) || 4000;
+console.log("PORT", process.env.PORT);
 
 console.log(`API listening on http://localhost:${port} (db: ${dbPath})`);
 

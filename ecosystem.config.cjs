@@ -2,7 +2,8 @@ module.exports = {
   apps: [
     {
       name: "ticket-system",
-      script: "src/index.ts",
+      script: "bun",
+      args: ["src/index.ts"],
       cwd: "./src/server",
       interpreter: "bun",
       instances: 1,
@@ -17,6 +18,7 @@ module.exports = {
       error_file: "logs/error.log",
       out_file: "logs/out.log",
       log_date_format: "YYYY-MM-DD HH:mm:ss",
+      interpreter: "none"
     },
   ],
 };
