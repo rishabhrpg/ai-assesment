@@ -43,7 +43,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setIsLoading(state.isLoading);
     });
 
-    return unsubscribe;
+    return (): void => {
+      unsubscribe();
+    };
   }, []);
 
   const login = useCallback(async (email: string, password: string) => {

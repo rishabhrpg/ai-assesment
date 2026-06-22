@@ -1,7 +1,9 @@
 import { join } from "node:path";
+import { existsSync } from "node:fs";
 import { eq, sql, desc, and } from "drizzle-orm";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
+import { serveStatic } from "hono/bun";
 import { z } from "zod";
 import type { Db } from "./db/client";
 import { comments, tickets, users } from "./db/schema";
@@ -502,7 +504,23 @@ export function createApp(db: Db) {
   const api = createApiRouter(db);
   app.route("/api", api);
 
+  const distPath = resolveDistPath();
+  if (existsSync(distPath)) {
+    app.use("/*", serveStatic({ root: distPath }));
+    app.get("*", (c) => new Response(Bun.file(join(distPath, "index.html"))));
+  }
+
   return app;
+}
+
+export function resolveDistPath(): string {
+  const cwd = process.cwd();
+  const root = cwd.endsWith("src/server") ? join(cwd, "../..") : cwd;
+  const fromEnv = process.env.DIST_PATH;
+  if (fromEnv) {
+    return fromEnv.startsWith("/") ? fromEnv : join(root, fromEnv);
+  }
+  return join(root, "src/client/dist");
 }
 
 export function resolveDatabasePath(): string {

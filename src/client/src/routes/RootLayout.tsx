@@ -8,7 +8,6 @@ export function RootLayout() {
   const { user, logout, hasRole } = useAuth();
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   // Fetch users for reference (only admin/manager/agent can see all users)
@@ -30,7 +29,7 @@ export function RootLayout() {
         if (!cancelled) setLoading(false);
       }
     })();
-    return () => {
+    return (): void => {
       cancelled = true;
     };
   }, [user]);
@@ -137,11 +136,7 @@ export function RootLayout() {
           </div>
         )}
 
-        {error && (
-          <div className="border-t border-amber-200 bg-amber-50 px-4 py-2 text-sm text-amber-900">
-            {error}
-          </div>
-        )}
+
       </header>
 
       <main className="mx-auto max-w-5xl px-4 py-6">

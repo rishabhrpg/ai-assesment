@@ -6,6 +6,10 @@
     "dev": "concurrently -n server,client -c blue,green \"bun run --cwd src/server dev\" \"bun run --cwd src/client dev\"",
     "dev:server": "bun run --cwd src/server dev",
     "dev:client": "bun run --cwd src/client dev",
+    "build": "bun run build:client",
+    "build:client": "bun run --cwd src/client build",
+    "build:server": "echo 'Server runs directly with Bun; no build step required.'",
+    "start": "bun run --cwd src/server start",
     "db:migrate": "bun run --cwd src/server db:migrate",
     "db:seed": "bun run --cwd src/server db:seed",
     "test": "bun test tests/"
