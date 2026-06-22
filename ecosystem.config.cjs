@@ -10,7 +10,7 @@ module.exports = {
       watch: false,
       env: {
         NODE_ENV: "production",
-        PORT: "3000",
+        PORT: "4000",
         // DATABASE_PATH: "database/data.db",  // override if needed
         // DIST_PATH: "src/client/dist",        // override if needed
       },
