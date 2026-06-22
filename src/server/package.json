@@ -1,0 +1,19 @@
+{
+  "name": "@ticket-system/server",
+  "module": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "bun --watch src/index.ts",
+    "db:migrate": "bun src/scripts/migrate.ts",
+    "db:seed": "bun src/scripts/seed.ts",
+    "start": "bun src/index.ts"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.38.3",
+    "hono": "^4.6.14",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
