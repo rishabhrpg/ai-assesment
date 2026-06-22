@@ -81,10 +81,6 @@ cd src/client && bun run build
 
 Serve `src/client/dist` with any static host; configure it to reverse-proxy `/api` to the Bun API, or set equivalent CORS and API URL as needed.
 
-## Security note
-
-There is **no authentication** in the Core build (per assessment scope). The UI lets you pick an “acting as” seeded user for `createdBy` / comments. Do not expose this app to the public internet without adding auth and authorization.
-
 ## Authentication & Authorization
 
 The application includes full authentication and role-based access control:
