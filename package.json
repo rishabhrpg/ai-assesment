@@ -10,6 +10,10 @@
     "build:client": "bun run --cwd src/client build",
     "build:server": "echo 'Server runs directly with Bun; no build step required.'",
     "start": "bun run --cwd src/server start",
+    "pm2:start": "pm2 start ecosystem.config.cjs",
+    "pm2:stop": "pm2 stop ticket-system",
+    "pm2:restart": "pm2 restart ticket-system",
+    "pm2:logs": "pm2 logs ticket-system",
     "db:migrate": "bun run --cwd src/server db:migrate",
     "db:seed": "bun run --cwd src/server db:seed",
     "test": "bun test tests/"
